@@ -6,7 +6,7 @@ phases:
     commands:
       - echo Logging in to AWS ECR...
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 515238770301.dkr.ecr.us-east-1.amazonaws.com
-      
+
   build:
     commands:
       - echo Building the docker image...
@@ -18,3 +18,8 @@ phases:
       - docker tag django-app:latest 515238770301.dkr.ecr.us-east-1.amazonaws.com/djangoapp:django-app
       - echo pushing the django image to ECR
       - docker push 515238770301.dkr.ecr.us-east-1.amazonaws.com/djangoapp:django-app
+      - printf '[{"name":"django-api", "imageUri":"515238770301.dkr.ecr.us-east-1.amazonaws.com/djangoapp:django-app"}]' > imagedefinitions.json
+  
+  artifacts:
+    files:
+      - imagedefinitions.json

@@ -18,7 +18,7 @@ phases:
       - docker tag django-app:latest 515238770301.dkr.ecr.us-east-1.amazonaws.com/djangoapp:django-app
       - echo pushing the django image to ECR
       - docker push 515238770301.dkr.ecr.us-east-1.amazonaws.com/djangoapp:django-app
-      - printf '[{"name":"django-api", "imageUri":"515238770301.dkr.ecr.us-east-1.amazonaws.com/djangoapp:django-app"}]' > imagedefinitions.json
+      - printf '[{"name":"django-container", "imageUri":"515238770301.dkr.ecr.us-east-1.amazonaws.com/djangoapp:django-app"}]' > imagedefinitions.json
   
 artifacts:
   files:
